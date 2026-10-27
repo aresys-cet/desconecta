@@ -1,19 +1,8 @@
-<<<<<<< HEAD
-=======
 import React from "react";
->>>>>>> f5ddfe4 (Primer version)
 import {
   BrowserRouter,
   Routes,
   Route,
-<<<<<<< HEAD
-  Navigate
-} from "react-router-dom";
-
-import { ThemeProvider } from "./context/ThemeContext";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-=======
   Navigate,
   Outlet
 } from "react-router-dom";
@@ -56,30 +45,10 @@ function AppLayout() {
     </div>
   );
 }
->>>>>>> f5ddfe4 (Primer version)
 
 function App() {
   return (
     <ThemeProvider>
-<<<<<<< HEAD
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={<Navigate to="/login" replace />}
-          />
-
-          <Route path="/login" element={<Login />} />
-
-          <Route path="/registro" element={<Register />} />
-
-          <Route
-            path="*"
-            element={<Navigate to="/login" replace />}
-          />
-        </Routes>
-      </BrowserRouter>
-=======
       <AuthProvider>
         <ActivityProvider>
           <BrowserRouter>
@@ -106,7 +75,6 @@ function App() {
           </BrowserRouter>
         </ActivityProvider>
       </AuthProvider>
->>>>>>> f5ddfe4 (Primer version)
     </ThemeProvider>
   );
 }

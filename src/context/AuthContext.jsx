@@ -8,7 +8,7 @@ const DEFAULT_GUEST = {
   id: "guest-01",
   name: "Explorador Zen",
   email: "zen@desconecta.app",
-  avatar: "🌿",
+  avatar: "leaf",
   bio: "Cultivando momentos de presencia y desconexión digital.",
   targetMinutes: 60,
   joinedAt: new Date().toISOString()

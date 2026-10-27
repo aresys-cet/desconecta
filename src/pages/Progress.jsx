@@ -1,6 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useActivities } from "../context/ActivityContext";
+import AppIcon from "../components/AppIcon";
+import {
+  BarChart3,
+  Clock,
+  Target,
+  Flame,
+  Trophy,
+  Sparkles,
+  Dices
+} from "lucide-react";
 
 // Nombres de rangos zen según el nivel
 const LEVEL_TITLES = [
@@ -50,7 +60,9 @@ export default function Progress() {
       {/* Page Header */}
       <section className="page-hero">
         <div className="page-hero-badge">
-          <span>📊 Panel de Evolución</span>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+            <BarChart3 size={16} color="var(--brand-color)" /> Panel de Evolución
+          </span>
         </div>
         <h1 className="page-hero-title">Mi Progreso & Retos Cumplidos</h1>
         <p className="page-hero-subtitle">
@@ -62,7 +74,9 @@ export default function Progress() {
       {/* KPI Stats Grid */}
       <section className="stats-kpi-grid">
         <div className="kpi-card">
-          <div className="kpi-icon-box">⏳</div>
+          <div className="kpi-icon-box">
+            <Clock size={24} color="#2a9d8f" />
+          </div>
           <div className="kpi-info">
             <span className="kpi-value">{stats.totalMinutesOffline || 0} min</span>
             <span className="kpi-label">Desconexión acumulada</span>
@@ -70,7 +84,9 @@ export default function Progress() {
         </div>
 
         <div className="kpi-card">
-          <div className="kpi-icon-box">🎯</div>
+          <div className="kpi-icon-box">
+            <Target size={24} color="#e76f51" />
+          </div>
           <div className="kpi-info">
             <span className="kpi-value">{stats.completedActivities || 0}</span>
             <span className="kpi-label">Retos cumplidos</span>
@@ -78,7 +94,9 @@ export default function Progress() {
         </div>
 
         <div className="kpi-card">
-          <div className="kpi-icon-box">🔥</div>
+          <div className="kpi-icon-box">
+            <Flame size={24} color="#f4a261" />
+          </div>
           <div className="kpi-info">
             <span className="kpi-value">{stats.streak || 0} días</span>
             <span className="kpi-label">Racha activa</span>
@@ -86,7 +104,9 @@ export default function Progress() {
         </div>
 
         <div className="kpi-card">
-          <div className="kpi-icon-box">🏆</div>
+          <div className="kpi-icon-box">
+            <Trophy size={24} color="#52b788" />
+          </div>
           <div className="kpi-info">
             <span className="kpi-value">
               {unlockedCount} / {totalAchievements}
@@ -100,7 +120,9 @@ export default function Progress() {
       <section className="level-banner-card">
         <div className="level-banner-header">
           <div className="level-title-wrap">
-            <div className="level-badge-large">⭐</div>
+            <div className="level-badge-large">
+              <Sparkles size={28} color="#ffffff" />
+            </div>
             <div>
               <h3 className="level-name">
                 Nivel {level}: {rankTitle}
@@ -138,14 +160,19 @@ export default function Progress() {
                 key={ach.id}
                 className={`achievement-card ${isUnlocked ? "unlocked" : "locked"}`}
               >
-                <div className="achievement-icon-wrap">{ach.icon}</div>
+                <div className="achievement-icon-wrap">
+                  <AppIcon name={ach.icon} size={28} />
+                </div>
                 <div className="achievement-details">
                   <h4 className="achievement-title">
                     {ach.title}
                     {isUnlocked && <span className="achievement-status-tag">Desbloqueado</span>}
                   </h4>
                   <p className="achievement-desc">{ach.description}</p>
-                  <span className="achievement-reward">⭐ +{ach.xpReward} XP</span>
+                  <span className="achievement-reward">
+                    <Sparkles size={13} style={{ marginRight: "4px", verticalAlign: "middle" }} />
+                    +{ach.xpReward} XP
+                  </span>
                 </div>
               </div>
             );
@@ -167,7 +194,9 @@ export default function Progress() {
             {history.map((item) => (
               <div key={item.id} className="history-item">
                 <div className="history-item-left">
-                  <span className="history-item-icon">{item.icon}</span>
+                  <span className="history-item-icon">
+                    <AppIcon name={item.icon} size={22} color="var(--brand-color)" />
+                  </span>
                   <div>
                     <h4 className="history-item-title">{item.title}</h4>
                     {item.reflection && (
@@ -177,8 +206,14 @@ export default function Progress() {
                 </div>
 
                 <div className="history-item-right">
-                  <span className="history-time-badge">⏱️ {item.duration} min</span>
-                  <span className="challenge-meta-pill xp-pill">⭐ +{item.xp} XP</span>
+                  <span className="history-time-badge">
+                    <Clock size={13} style={{ marginRight: "4px", verticalAlign: "middle" }} />
+                    {item.duration} min
+                  </span>
+                  <span className="challenge-meta-pill xp-pill">
+                    <Sparkles size={13} style={{ marginRight: "4px", verticalAlign: "middle" }} />
+                    +{item.xp} XP
+                  </span>
                   <span className="history-date">{formatDate(item.completedAt)}</span>
                 </div>
               </div>
@@ -186,15 +221,17 @@ export default function Progress() {
           </div>
         ) : (
           <div className="empty-history-box">
-            <div className="empty-icon">🎡</div>
+            <div className="empty-icon">
+              <Dices size={48} color="var(--brand-color)" />
+            </div>
             <h3>Aún no has completado tu primer reto</h3>
             <p>Gira la ruleta en la sección de retos para comenzar tu registro de bienestar.</p>
             <Link
               to="/actividades"
               className="spin-trigger-btn"
-              style={{ marginTop: "16px", display: "inline-flex" }}
+              style={{ marginTop: "16px", display: "inline-flex", alignItems: "center", gap: "8px" }}
             >
-              Girar Ruleta Ahora
+              <Dices size={18} /> Girar Ruleta Ahora
             </Link>
           </div>
         )}

@@ -1,22 +1,12 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
-=======
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
->>>>>>> f5ddfe4 (Primer version)
 import ThemeToggle from "../components/ThemeToggle";
 import "../styles/auth.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-<<<<<<< HEAD
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Inicio de sesión:", { email, password });
-=======
   const { login, loginAsGuest } = useAuth();
   const navigate = useNavigate();
 
@@ -29,7 +19,6 @@ function Login() {
   const handleGuest = () => {
     loginAsGuest();
     navigate("/");
->>>>>>> f5ddfe4 (Primer version)
   };
 
   return (
@@ -96,9 +85,6 @@ function Login() {
           <button type="submit" className="auth-submit-btn">
             Iniciar sesión
           </button>
-<<<<<<< HEAD
-=======
-
           <button
             type="button"
             className="auth-submit-btn"
@@ -113,7 +99,6 @@ function Login() {
           >
             Explorar como Invitado
           </button>
->>>>>>> f5ddfe4 (Primer version)
         </form>
 
         <p className="auth-footer">

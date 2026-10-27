@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { CATEGORIES } from "../data/activities";
+import AppIcon from "./AppIcon";
+import { Clock, Sparkles } from "lucide-react";
 
 export default function ActivityCard({
   activity,
@@ -11,7 +13,7 @@ export default function ActivityCard({
   const cat = CATEGORIES[activity.category?.toUpperCase()] || {
     name: "General",
     color: "#2d6a4f",
-    icon: "🌱",
+    icon: "Sprout",
     bg: "rgba(45, 106, 79, 0.1)"
   };
 
@@ -28,16 +30,24 @@ export default function ActivityCard({
           className="activity-cat-tag"
           style={{ backgroundColor: cat.bg, color: cat.color }}
         >
-          {cat.icon} {cat.name}
+          <AppIcon name={cat.icon} size={15} style={{ marginRight: "6px" }} /> {cat.name}
         </span>
         <div className="activity-badges">
-          <span className="activity-badge-time">⏱️ {activity.duration}m</span>
-          <span className="activity-badge-xp">⭐ +{activity.xp}</span>
+          <span className="activity-badge-time">
+            <Clock size={13} style={{ marginRight: "4px", verticalAlign: "middle" }} />
+            {activity.duration}m
+          </span>
+          <span className="activity-badge-xp">
+            <Sparkles size={13} style={{ marginRight: "4px", verticalAlign: "middle" }} />
+            +{activity.xp} XP
+          </span>
         </div>
       </div>
 
       <div className="activity-card-main">
-        <div className="activity-card-icon">{activity.icon}</div>
+        <div className="activity-card-icon">
+          <AppIcon name={activity.icon} size={32} color={cat.color} />
+        </div>
         <h3 className="activity-card-title">{activity.title}</h3>
         <p className="activity-card-desc">{activity.summary}</p>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Sparkles, CheckCircle2 } from "lucide-react";
 
 const MINDFULNESS_TIPS = [
   "Deja tu teléfono boca abajo o en otra habitación.",
@@ -89,7 +90,9 @@ export default function Timer({
 
       {/* Mindfulness Tip banner */}
       <div className="timer-tip-box">
-        <span className="timer-tip-icon">✨</span>
+        <span className="timer-tip-icon">
+          <Sparkles size={16} color="#52b788" />
+        </span>
         <p className="timer-tip-text">{MINDFULNESS_TIPS[tipIndex]}</p>
       </div>
 
@@ -142,7 +145,9 @@ export default function Timer({
           onClick={onComplete}
           title="Completar y registrar actividad"
         >
-          <span>✓ Completar Reto</span>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+            <CheckCircle2 size={16} /> Completar Reto
+          </span>
         </button>
       </div>
     </div>

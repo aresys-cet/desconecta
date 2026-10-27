@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState, useMemo, useCallback } from "react";
 import { sound } from "../utils/audio";
 import { CATEGORIES } from "../data/activities";
+import { getCanvasIconImage } from "../utils/canvasIcons";
+import { Dices } from "lucide-react";
 
 export default function RouletteWheel({
   activities = [],
@@ -93,22 +95,38 @@ export default function RouletteWheel({
       ctx.textAlign = "right";
       ctx.textBaseline = "middle";
 
-      // Draw Icon
-      ctx.font = "bold 24px 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif";
-      ctx.fillText(item.icon, radius - 16, 0);
+      // Draw Icon disc backdrop and vector icon
+      const iconX = radius - 20;
+      const iconY = 0;
+      const iconSize = 22;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(iconX, iconY, 13, 0, 2 * Math.PI);
+      ctx.fillStyle = "rgba(0, 0, 0, 0.22)";
+      ctx.fill();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
+      ctx.stroke();
+      ctx.restore();
+
+      const img = getCanvasIconImage(item.icon, "#ffffff");
+      if (img && img.complete) {
+        ctx.drawImage(img, iconX - iconSize / 2, iconY - iconSize / 2, iconSize, iconSize);
+      }
 
       // Draw Short Title
       ctx.fillStyle = "#ffffff";
-      ctx.font = "600 13px 'Poppins', sans-serif";
-      ctx.shadowColor = "rgba(0, 0, 0, 0.4)";
+      ctx.font = "600 12.5px 'Poppins', sans-serif";
+      ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
       ctx.shadowBlur = 4;
 
-      const maxTitleLen = 17;
+      const maxTitleLen = 16;
       let displayTitle = item.title;
       if (displayTitle.length > maxTitleLen) {
         displayTitle = displayTitle.slice(0, maxTitleLen - 2) + "...";
       }
-      ctx.fillText(displayTitle, radius - 50, 0);
+      ctx.fillText(displayTitle, radius - 42, 0);
 
       ctx.restore();
     });
@@ -148,10 +166,10 @@ export default function RouletteWheel({
     ctx.fill();
 
     // Center icon
-    ctx.font = "24px sans-serif";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText("🌿", centerX, centerY);
+    const centerImg = getCanvasIconImage("sprout", "#d8f3dc");
+    if (centerImg && centerImg.complete) {
+      ctx.drawImage(centerImg, centerX - 14, centerY - 14, 28, 28);
+    }
     ctx.restore();
   }, [items, numSlices, sliceAngle]);
 
@@ -159,6 +177,18 @@ export default function RouletteWheel({
   useEffect(() => {
     drawWheel(currentRotation);
   }, [drawWheel, currentRotation]);
+
+  // Pre-load vector icons for active slices
+  useEffect(() => {
+    items.forEach((item) => {
+      getCanvasIconImage(item.icon, "#ffffff", () => {
+        drawWheel(currentRotation);
+      });
+    });
+    getCanvasIconImage("sprout", "#d8f3dc", () => {
+      drawWheel(currentRotation);
+    });
+  }, [items, drawWheel, currentRotation]);
 
   // Main Spin Handler
   const spin = () => {
@@ -284,7 +314,7 @@ export default function RouletteWheel({
             </>
           ) : (
             <>
-              <span className="btn-icon">🎡</span> ¡Girar Ruleta de Desconexión!
+              <Dices size={22} className="btn-icon" /> ¡Girar Ruleta de Desconexión!
             </>
           )}
         </button>

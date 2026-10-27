@@ -3,6 +3,18 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useActivities } from "../context/ActivityContext";
 import ThemeToggle from "./ThemeToggle";
+import AppIcon from "./AppIcon";
+import {
+  Home,
+  Dices,
+  BarChart3,
+  User,
+  Flame,
+  Sparkles,
+  Volume2,
+  VolumeX,
+  LogOut
+} from "lucide-react";
 
 export default function Navbar() {
   const { user, isAuthenticated, logout } = useAuth();
@@ -50,7 +62,7 @@ export default function Navbar() {
             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
             onClick={closeMenu}
           >
-            <span className="nav-icon">🏡</span> Inicio
+            <span className="nav-icon"><Home size={18} /></span> Inicio
           </NavLink>
 
           <NavLink
@@ -58,7 +70,7 @@ export default function Navbar() {
             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
             onClick={closeMenu}
           >
-            <span className="nav-icon">🎡</span> Ruleta & Retos
+            <span className="nav-icon"><Dices size={18} /></span> Ruleta & Retos
             {hasActiveChallenge && <span className="nav-pulse-dot" title="Reto activo"></span>}
           </NavLink>
 
@@ -67,7 +79,7 @@ export default function Navbar() {
             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
             onClick={closeMenu}
           >
-            <span className="nav-icon">📊</span> Progreso
+            <span className="nav-icon"><BarChart3 size={18} /></span> Progreso
           </NavLink>
 
           <NavLink
@@ -75,7 +87,7 @@ export default function Navbar() {
             className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
             onClick={closeMenu}
           >
-            <span className="nav-icon">👤</span> Perfil
+            <span className="nav-icon"><User size={18} /></span> Perfil
           </NavLink>
         </nav>
 
@@ -83,13 +95,13 @@ export default function Navbar() {
         <div className="navbar-actions">
           {/* Streak indicator */}
           <div className="navbar-streak-pill" title={`Racha actual: ${stats.streak || 0} días consecutivos`}>
-            <span className="streak-flame">🔥</span>
+            <span className="streak-flame"><Flame size={16} /></span>
             <span className="streak-count">{stats.streak || 0}d</span>
           </div>
 
           {/* User Level badge */}
           <div className="navbar-level-pill" title={`Nivel ${level} (${stats.xp || 0} XP)`}>
-            <span className="level-star">⭐</span>
+            <span className="level-star"><Sparkles size={16} /></span>
             <span className="level-num">Nvl {level}</span>
           </div>
 
@@ -101,7 +113,7 @@ export default function Navbar() {
             aria-label={soundEnabled ? "Desactivar sonidos" : "Activar sonidos"}
             title={soundEnabled ? "Sonido activado" : "Sonido desactivado"}
           >
-            {soundEnabled ? "🔊" : "🔇"}
+            {soundEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
           </button>
 
           {/* Dark/Light mode */}
@@ -111,7 +123,9 @@ export default function Navbar() {
           {isAuthenticated ? (
             <div className="navbar-user-wrap">
               <Link to="/perfil" className="navbar-user-btn" title="Ver mi perfil">
-                <span className="navbar-avatar">{user.avatar || "🌱"}</span>
+                <span className="navbar-avatar">
+                  <AppIcon name={user.avatar || "Sprout"} size={17} />
+                </span>
                 <span className="navbar-username">{user.name.split(" ")[0]}</span>
               </Link>
               <button
@@ -120,11 +134,7 @@ export default function Navbar() {
                 onClick={handleLogout}
                 title="Cerrar sesión"
               >
-                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                  <polyline points="16 17 21 12 16 7"></polyline>
-                  <line x1="21" y1="12" x2="9" y2="12"></line>
-                </svg>
+                <LogOut size={16} />
               </button>
             </div>
           ) : (
@@ -157,14 +167,14 @@ export default function Navbar() {
               className={({ isActive }) => `mobile-nav-link ${isActive ? "active" : ""}`}
               onClick={closeMenu}
             >
-              <span className="nav-icon">🏡</span> Inicio
+              <span className="nav-icon"><Home size={18} /></span> Inicio
             </NavLink>
             <NavLink
               to="/actividades"
               className={({ isActive }) => `mobile-nav-link ${isActive ? "active" : ""}`}
               onClick={closeMenu}
             >
-              <span className="nav-icon">🎡</span> Ruleta & Retos
+              <span className="nav-icon"><Dices size={18} /></span> Ruleta & Retos
               {hasActiveChallenge && <span className="nav-badge-pill">En curso</span>}
             </NavLink>
             <NavLink
@@ -172,17 +182,18 @@ export default function Navbar() {
               className={({ isActive }) => `mobile-nav-link ${isActive ? "active" : ""}`}
               onClick={closeMenu}
             >
-              <span className="nav-icon">📊</span> Mi Progreso
+              <span className="nav-icon"><BarChart3 size={18} /></span> Mi Progreso
             </NavLink>
             <NavLink
               to="/perfil"
               className={({ isActive }) => `mobile-nav-link ${isActive ? "active" : ""}`}
               onClick={closeMenu}
             >
-              <span className="nav-icon">👤</span> Mi Perfil
+              <span className="nav-icon"><User size={18} /></span> Mi Perfil
             </NavLink>
             {isAuthenticated ? (
               <button type="button" className="mobile-logout-btn" onClick={handleLogout}>
+                <LogOut size={16} style={{ marginRight: "8px", verticalAlign: "middle" }} />
                 Cerrar Sesión
               </button>
             ) : (

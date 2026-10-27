@@ -3,8 +3,10 @@ import RouletteWheel from "../components/RouletteWheel";
 import ChallengeModal from "../components/ChallengeModal";
 import ActivityCard from "../components/ActivityCard";
 import Timer from "../components/Timer";
+import AppIcon from "../components/AppIcon";
 import { useActivities } from "../context/ActivityContext";
 import { CATEGORIES } from "../data/activities";
+import { Sparkles, Compass, Target } from "lucide-react";
 
 export default function Activities() {
   const {
@@ -83,7 +85,9 @@ export default function Activities() {
       {/* Page Hero */}
       <section className="page-hero">
         <div className="page-hero-badge">
-          <span>🌿 Bienestar & Presencia</span>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+            <Sparkles size={16} color="var(--brand-color)" /> Bienestar & Presencia
+          </span>
         </div>
         <h1 className="page-hero-title">Ruleta de Desconexión</h1>
         <p className="page-hero-subtitle">
@@ -99,7 +103,10 @@ export default function Activities() {
           className={`category-chip-btn ${selectedCategory === "all" ? "active" : ""}`}
           onClick={() => setSelectedCategory("all")}
         >
-          <span>✨</span> Todas las Categorías
+          <span style={{ display: "inline-flex", alignItems: "center", marginRight: "6px" }}>
+            <Compass size={16} />
+          </span>
+          Todas las Categorías
         </button>
         {Object.values(CATEGORIES).map((cat) => (
           <button
@@ -108,7 +115,10 @@ export default function Activities() {
             className={`category-chip-btn ${selectedCategory === cat.id ? "active" : ""}`}
             onClick={() => setSelectedCategory(cat.id)}
           >
-            <span>{cat.icon}</span> {cat.name}
+            <span style={{ display: "inline-flex", alignItems: "center", marginRight: "6px" }}>
+              <AppIcon name={cat.icon} size={16} color={cat.color} />
+            </span>
+            {cat.name}
           </button>
         ))}
       </div>
@@ -129,18 +139,23 @@ export default function Activities() {
           className="assigned-challenge-section"
         >
           <div className="assigned-banner-pill">
-            <span>🎯 RETO ASIGNADO EN CURSO</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+              <Target size={16} /> RETO ASIGNADO EN CURSO
+            </span>
           </div>
 
           <div className="assigned-content-grid">
             {/* Left Column: Challenge info and reflection */}
             <div className="assigned-info-box">
               <div className="assigned-title-row">
-                <span className="assigned-activity-icon">{assignedActivity.icon}</span>
+                <span className="assigned-activity-icon">
+                  <AppIcon name={assignedActivity.icon} size={36} color="var(--brand-color)" />
+                </span>
                 <div>
                   <h2 className="assigned-activity-title">{assignedActivity.title}</h2>
                   <span className="challenge-meta-pill xp-pill">
-                    ⭐ +{assignedActivity.xp} XP al completar
+                    <Sparkles size={13} style={{ marginRight: "4px", verticalAlign: "middle" }} />
+                    +{assignedActivity.xp} XP al completar
                   </span>
                 </div>
               </div>
@@ -149,7 +164,9 @@ export default function Activities() {
 
               {assignedActivity.benefit && (
                 <div className="challenge-benefit-card">
-                  <span className="benefit-icon">🌿</span>
+                  <span className="benefit-icon">
+                    <AppIcon name={assignedActivity.category || "sprout"} size={18} color="var(--brand-color)" />
+                  </span>
                   <div>
                     <strong>Impacto positivo:</strong>
                     <p>{assignedActivity.benefit}</p>

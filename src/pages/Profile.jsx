@@ -2,8 +2,21 @@ import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useActivities } from "../context/ActivityContext";
 import { useTheme } from "../context/ThemeContext";
+import AppIcon from "../components/AppIcon";
+import { User, RotateCcw, LogOut } from "lucide-react";
 
-const AVATAR_OPTIONS = ["🌿", "🧘", "🎨", "🌲", "☕", "🚲", "✨", "🦊", "🌸", "📖"];
+const AVATAR_OPTIONS = [
+  "leaf",
+  "heart",
+  "palette",
+  "trees",
+  "coffee",
+  "bike",
+  "sparkles",
+  "sun",
+  "flower2",
+  "bookopen"
+];
 
 export default function Profile() {
   const { user, updateProfile, logout } = useAuth();
@@ -16,7 +29,7 @@ export default function Profile() {
     user?.bio || "Cultivando momentos de presencia y desconexión digital."
   );
   const [targetMinutes, setTargetMinutes] = useState(user?.targetMinutes || 60);
-  const [avatar, setAvatar] = useState(user?.avatar || "🌿");
+  const [avatar, setAvatar] = useState(user?.avatar || "leaf");
   const [savedAlert, setSavedAlert] = useState(false);
 
   const handleSubmit = (e) => {
@@ -44,7 +57,9 @@ export default function Profile() {
       {/* Page Header */}
       <section className="page-hero">
         <div className="page-hero-badge">
-          <span>👤 Configuración Personal</span>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+            <User size={16} color="var(--brand-color)" /> Configuración Personal
+          </span>
         </div>
         <h1 className="page-hero-title">Mi Perfil Zen</h1>
         <p className="page-hero-subtitle">
@@ -73,7 +88,21 @@ export default function Profile() {
       <div className="profile-grid">
         {/* Sidebar Info Card */}
         <aside className="profile-card-sidebar">
-          <div className="profile-avatar-giant">{avatar}</div>
+          <div
+            className="profile-avatar-giant"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "rgba(45, 106, 79, 0.12)",
+              borderRadius: "50%",
+              width: "110px",
+              height: "110px",
+              margin: "0 auto 16px"
+            }}
+          >
+            <AppIcon name={avatar} size={54} color="var(--brand-color)" />
+          </div>
           <h2 className="profile-name-title">{name}</h2>
           <p className="profile-email-sub">{email}</p>
           <p className="profile-bio-text">{bio}</p>
@@ -101,13 +130,15 @@ export default function Profile() {
               className="btn-reroll-challenge"
               onClick={handleResetData}
             >
-              🔄 Restablecer datos de prueba
+              <RotateCcw size={15} style={{ marginRight: "6px", verticalAlign: "middle" }} />
+              Restablecer datos de prueba
             </button>
             <button
               type="button"
               className="mobile-logout-btn"
               onClick={logout}
             >
+              <LogOut size={16} style={{ marginRight: "6px", verticalAlign: "middle" }} />
               Cerrar Sesión
             </button>
           </div>
@@ -124,14 +155,21 @@ export default function Profile() {
             <div className="form-group-custom">
               <label>Selecciona tu avatar zen:</label>
               <div className="avatar-selector-row">
-                {AVATAR_OPTIONS.map((emoji) => (
+                {AVATAR_OPTIONS.map((item) => (
                   <button
-                    key={emoji}
+                    key={item}
                     type="button"
-                    className={`avatar-choice-btn ${avatar === emoji ? "selected" : ""}`}
-                    onClick={() => setAvatar(emoji)}
+                    className={`avatar-choice-btn ${avatar === item ? "selected" : ""}`}
+                    onClick={() => setAvatar(item)}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "48px",
+                      height: "48px"
+                    }}
                   >
-                    {emoji}
+                    <AppIcon name={item} size={24} />
                   </button>
                 ))}
               </div>

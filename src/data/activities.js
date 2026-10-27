@@ -6,7 +6,7 @@ export const CATEGORIES = {
     name: "Naturaleza & Aire Libre",
     color: "#2d6a4f",
     accent: "#52b788",
-    icon: "🌱",
+    icon: "Sprout",
     bg: "rgba(45, 106, 79, 0.12)"
   },
   CREATIVIDAD: {
@@ -14,7 +14,7 @@ export const CATEGORIES = {
     name: "Creatividad & Arte",
     color: "#e76f51",
     accent: "#f4a261",
-    icon: "🎨",
+    icon: "Palette",
     bg: "rgba(231, 111, 81, 0.12)"
   },
   CALMA: {
@@ -22,7 +22,7 @@ export const CATEGORIES = {
     name: "Mente & Bienestar",
     color: "#2a9d8f",
     accent: "#48cae4",
-    icon: "🧘",
+    icon: "Heart",
     bg: "rgba(42, 157, 143, 0.12)"
   },
   SOCIAL: {
@@ -30,7 +30,7 @@ export const CATEGORIES = {
     name: "Social & Familia",
     color: "#9d4edd",
     accent: "#c77dff",
-    icon: "🤝",
+    icon: "Users",
     bg: "rgba(157, 78, 221, 0.12)"
   },
   MOVIMIENTO: {
@@ -38,7 +38,7 @@ export const CATEGORIES = {
     name: "Movimiento & Cuerpo",
     color: "#e63946",
     accent: "#ff758f",
-    icon: "🏃",
+    icon: "Activity",
     bg: "rgba(230, 57, 70, 0.12)"
   },
   LECTURA: {
@@ -46,7 +46,7 @@ export const CATEGORIES = {
     name: "Lectura & Enfoque",
     color: "#1d3557",
     accent: "#457b9d",
-    icon: "📖",
+    icon: "BookOpen",
     bg: "rgba(29, 53, 87, 0.12)"
   }
 };
@@ -59,7 +59,7 @@ export const ACTIVITIES = [
     duration: 20, // en minutos
     difficulty: "Fácil",
     xp: 60,
-    icon: "🌲",
+    icon: "Trees",
     summary: "Sal a caminar por tu vecindario o parque dejando el teléfono en casa o en modo avión dentro del bolsillo.",
     instructions: [
       "Guarda el teléfono en un cajón o ponlo en modo silencio/avión en un bolsillo cerrado.",
@@ -76,7 +76,7 @@ export const ACTIVITIES = [
     duration: 30,
     difficulty: "Fácil",
     xp: 80,
-    icon: "📚",
+    icon: "BookOpen",
     summary: "Lee un libro, revista o cómic físico durante media hora ininterrumpida.",
     instructions: [
       "Elige un libro físico que te llame la atención.",
@@ -93,7 +93,7 @@ export const ACTIVITIES = [
     duration: 10,
     difficulty: "Fácil",
     xp: 40,
-    icon: "🫁",
+    icon: "Wind",
     summary: "Dedica 10 minutos a la técnica de respiración calmante para relajar tu sistema nervioso.",
     instructions: [
       "Siéntate en una postura cómoda con la espalda recta.",
@@ -111,7 +111,7 @@ export const ACTIVITIES = [
     duration: 25,
     difficulty: "Medio",
     xp: 75,
-    icon: "✏️",
+    icon: "PenTool",
     summary: "Toma papel y lápiz para dibujar lo que tengas frente a ti sin juzgar el resultado.",
     instructions: [
       "Consigue una hoja en blanco y cualquier lápiz, pluma o colores.",
@@ -128,7 +128,7 @@ export const ACTIVITIES = [
     duration: 30,
     difficulty: "Fácil",
     xp: 90,
-    icon: "☕",
+    icon: "Coffee",
     summary: "Comparte un café, té o caminata con un familiar o amigo con los teléfonos guardados.",
     instructions: [
       "Invita a alguien cercano a compartir unos minutos contigo.",
@@ -145,7 +145,7 @@ export const ACTIVITIES = [
     duration: 15,
     difficulty: "Fácil",
     xp: 50,
-    icon: "🧘‍♂️",
+    icon: "Activity",
     summary: "Alivia la tensión muscular provocada por encorvarse frente al celular o la computadora.",
     instructions: [
       "Estira el cuello suavemente llevando la oreja hacia el hombro durante 20 segundos cada lado.",
@@ -162,7 +162,7 @@ export const ACTIVITIES = [
     duration: 15,
     difficulty: "Fácil",
     xp: 55,
-    icon: "📓",
+    icon: "BookOpen",
     summary: "Escribe a mano en un cuaderno 3 cosas por las que te sientes agradecido hoy y cómo te sientes.",
     instructions: [
       "Abre tu cuaderno o libreta favorita.",
@@ -179,7 +179,7 @@ export const ACTIVITIES = [
     duration: 20,
     difficulty: "Fácil",
     xp: 60,
-    icon: "🪴",
+    icon: "Sprout",
     summary: "Riega tus plantas, limpia sus hojas secas o trasplanta un brote tocando la tierra.",
     instructions: [
       "Revisa la humedad de la tierra con tus dedos.",
@@ -196,7 +196,7 @@ export const ACTIVITIES = [
     duration: 15,
     difficulty: "Fácil",
     xp: 45,
-    icon: "🍵",
+    icon: "Coffee",
     summary: "Prepara una infusión caliente y bébela involucrando los cinco sentidos sin ninguna distracción.",
     instructions: [
       "Hierve agua y observa el vapor emergiendo.",
@@ -213,7 +213,7 @@ export const ACTIVITIES = [
     duration: 40,
     difficulty: "Medio",
     xp: 100,
-    icon: "🎲",
+    icon: "Dices",
     summary: "Disfruta de una partida de ajedrez, dominó, cartas, Scrabble o cualquier juego físico.",
     instructions: [
       "Saca un juego de mesa clásico que tengas guardado.",
@@ -230,7 +230,7 @@ export const ACTIVITIES = [
     duration: 35,
     difficulty: "Medio",
     xp: 95,
-    icon: "🚲",
+    icon: "Bike",
     summary: "Pedalea sintiendo el viento en la cara por calles tranquilas o ciclovías.",
     instructions: [
       "Revisa frenos y llantas de tu bicicleta.",
@@ -247,7 +247,7 @@ export const ACTIVITIES = [
     duration: 25,
     difficulty: "Medio",
     xp: 70,
-    icon: "🧹",
+    icon: "Sparkles",
     summary: "Elige un cajón, estante o rincón desordenado y organízalo con calma y atención.",
     instructions: [
       "Vacía por completo el cajón o repisa que elijas.",
@@ -264,7 +264,7 @@ export const ACTIVITIES = [
     duration: 20,
     difficulty: "Fácil",
     xp: 50,
-    icon: "🧩",
+    icon: "Puzzle",
     summary: "Resuelve un crucigrama, sopa de letras, sudoku o acertijo en una revista o periódico.",
     instructions: [
       "Busca un crucigrama o sudoku impreso.",
@@ -281,7 +281,7 @@ export const ACTIVITIES = [
     duration: 15,
     difficulty: "Fácil",
     xp: 50,
-    icon: "🌅",
+    icon: "Sunset",
     summary: "Contempla el cambio de luz natural, las formas de las nubes o las estrellas al anochecer.",
     instructions: [
       "Asómate a una ventana, balcón o patio.",
@@ -298,7 +298,7 @@ export const ACTIVITIES = [
     duration: 25,
     difficulty: "Medio",
     xp: 85,
-    icon: "✉️",
+    icon: "Mail",
     summary: "Escribe una carta sincera a alguien especial (amigo, abuelo, pareja) expresando aprecio.",
     instructions: [
       "Escoge una hoja de papel bonita y tu pluma favorita.",
@@ -315,7 +315,7 @@ export const ACTIVITIES = [
     duration: 45,
     difficulty: "Difícil",
     xp: 120,
-    icon: "🍳",
+    icon: "Utensils",
     summary: "Prepara un platillo o postre casero desde cero, picando y mezclando ingredientes a mano.",
     instructions: [
       "Lee la receta en papel antes de empezar.",
@@ -332,7 +332,7 @@ export const ACTIVITIES = [
     duration: 20,
     difficulty: "Fácil",
     xp: 50,
-    icon: "💤",
+    icon: "Moon",
     summary: "Acuéstate en un lugar fresco y silencioso para una micro-siesta o descanso sensorial.",
     instructions: [
       "Oscurece ligeramente la habitación o usa un antifaz.",
@@ -349,7 +349,7 @@ export const ACTIVITIES = [
     duration: 15,
     difficulty: "Fácil",
     xp: 60,
-    icon: "💃",
+    icon: "Music",
     summary: "Mueve el cuerpo libremente para soltar tensiones sin seguir ninguna coreografía de video.",
     instructions: [
       "Ponte ropa cómoda y despeja un espacio en tu sala o cuarto.",
@@ -366,7 +366,7 @@ export const ACHIEVEMENTS = [
     id: "first_spin",
     title: "Primer Giro Desconectado",
     description: "Gira la ruleta por primera vez y descubre tu primera actividad offline.",
-    icon: "🎡",
+    icon: "Dices",
     xpReward: 50,
     condition: (stats) => (stats.totalSpins || 0) >= 1
   },
@@ -374,7 +374,7 @@ export const ACHIEVEMENTS = [
     id: "first_completed",
     title: "Primer Reto Cumplido",
     description: "Completa tu primera actividad asignada por la ruleta.",
-    icon: "🌱",
+    icon: "Sprout",
     xpReward: 100,
     condition: (stats) => (stats.completedActivities || 0) >= 1
   },
@@ -382,7 +382,7 @@ export const ACHIEVEMENTS = [
     id: "time_master_1h",
     title: "Una Hora de Libertad",
     description: "Acumula 60 minutos de desconexión consciente.",
-    icon: "⏳",
+    icon: "Clock",
     xpReward: 150,
     condition: (stats) => (stats.totalMinutesOffline || 0) >= 60
   },
@@ -390,7 +390,7 @@ export const ACHIEVEMENTS = [
     id: "streak_3",
     title: "Racha Triunfal (3 Días)",
     description: "Mantén una racha de desconexión durante 3 días consecutivos.",
-    icon: "🔥",
+    icon: "Flame",
     xpReward: 200,
     condition: (stats) => (stats.streak || 0) >= 3
   },
@@ -398,7 +398,7 @@ export const ACHIEVEMENTS = [
     id: "variety_explorer",
     title: "Explorador Holístico",
     description: "Completa al menos una actividad en 4 categorías distintas.",
-    icon: "🧭",
+    icon: "Compass",
     xpReward: 250,
     condition: (stats) => (stats.uniqueCategoriesCount || 0) >= 4
   },
@@ -406,7 +406,7 @@ export const ACHIEVEMENTS = [
     id: "detox_veteran",
     title: "Maestro del Tiempo Presente",
     description: "Completa 10 retos y acumula más de 300 minutos desconectado.",
-    icon: "👑",
+    icon: "Crown",
     xpReward: 500,
     condition: (stats) => (stats.completedActivities || 0) >= 10 && (stats.totalMinutesOffline || 0) >= 300
   }

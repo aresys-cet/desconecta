@@ -3,6 +3,20 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useActivities } from "../context/ActivityContext";
 import { CATEGORIES } from "../data/activities";
+import AppIcon from "../components/AppIcon";
+import {
+  Target,
+  Leaf,
+  Dices,
+  BarChart3,
+  Flame,
+  Clock,
+  CheckCircle2,
+  Sparkles,
+  PhoneOff,
+  Trophy,
+  Lightbulb
+} from "lucide-react";
 
 export default function Home() {
   const { user } = useAuth();
@@ -17,7 +31,9 @@ export default function Home() {
       {hasActiveChallenge && (
         <div className="home-active-banner">
           <div className="home-active-banner-content">
-            <span className="banner-icon">🎯</span>
+            <span className="banner-icon">
+              <Target size={22} color="#e76f51" />
+            </span>
             <div className="banner-text">
               <strong>Reto activo: {assignedActivity.title}</strong>
               <p>
@@ -36,7 +52,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="page-hero">
         <div className="page-hero-badge">
-          <span>🌿 {user?.name ? `¡Hola, ${user.name.split(" ")[0]}! Bienestar Digital` : "Bienestar & Salud Digital"}</span>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+            <Leaf size={16} color="var(--brand-color)" />
+            {user?.name ? `¡Hola, ${user.name.split(" ")[0]}! Bienestar Digital` : "Bienestar & Salud Digital"}
+          </span>
         </div>
         <h1 className="page-hero-title">
           Reconecta con el mundo real,
@@ -50,10 +69,14 @@ export default function Home() {
 
         <div className="home-hero-actions">
           <Link to="/actividades" className="hero-cta-btn primary-cta">
-            <span>🎡 Girar la Ruleta de Retos</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              <Dices size={20} /> Girar la Ruleta de Retos
+            </span>
           </Link>
           <Link to="/progreso" className="hero-cta-btn secondary-cta">
-            <span>📊 Ver Mi Progreso</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              <BarChart3 size={20} /> Ver Mi Progreso
+            </span>
           </Link>
         </div>
       </section>
@@ -61,7 +84,9 @@ export default function Home() {
       {/* Today's KPI Summary */}
       <section className="stats-kpi-grid">
         <div className="kpi-card">
-          <div className="kpi-icon-box">🔥</div>
+          <div className="kpi-icon-box">
+            <Flame size={24} color="#f4a261" />
+          </div>
           <div className="kpi-info">
             <span className="kpi-value">{stats.streak || 0} días</span>
             <span className="kpi-label">Racha de desconexión</span>
@@ -69,7 +94,9 @@ export default function Home() {
         </div>
 
         <div className="kpi-card">
-          <div className="kpi-icon-box">⏳</div>
+          <div className="kpi-icon-box">
+            <Clock size={24} color="#2a9d8f" />
+          </div>
           <div className="kpi-info">
             <span className="kpi-value">{stats.totalMinutesOffline || 0} min</span>
             <span className="kpi-label">Tiempo libre de pantallas</span>
@@ -77,7 +104,9 @@ export default function Home() {
         </div>
 
         <div className="kpi-card">
-          <div className="kpi-icon-box">✅</div>
+          <div className="kpi-icon-box">
+            <CheckCircle2 size={24} color="#52b788" />
+          </div>
           <div className="kpi-info">
             <span className="kpi-value">{stats.completedActivities || 0}</span>
             <span className="kpi-label">Retos analógicos cumplidos</span>
@@ -85,7 +114,9 @@ export default function Home() {
         </div>
 
         <div className="kpi-card">
-          <div className="kpi-icon-box">⭐</div>
+          <div className="kpi-icon-box">
+            <Sparkles size={24} color="#e76f51" />
+          </div>
           <div className="kpi-info">
             <span className="kpi-value">Nivel {level}</span>
             <span className="kpi-label">{stats.xp || 0} XP acumulados</span>
@@ -105,7 +136,9 @@ export default function Home() {
         <div className="steps-cards-grid">
           <div className="step-card">
             <div className="step-number">1</div>
-            <div className="step-icon">🎡</div>
+            <div className="step-icon">
+              <Dices size={36} color="var(--brand-color)" />
+            </div>
             <h3 className="step-title">Gira la Ruleta</h3>
             <p className="step-desc">
               Deja que el azar decida tu próxima pausa consciente entre decenas de actividades saludables.
@@ -114,7 +147,9 @@ export default function Home() {
 
           <div className="step-card">
             <div className="step-number">2</div>
-            <div className="step-icon">📵</div>
+            <div className="step-icon">
+              <PhoneOff size={36} color="var(--accent-coral)" />
+            </div>
             <h3 className="step-title">Desconéctate y Cumple</h3>
             <p className="step-desc">
               Guarda tus dispositivos, activa el temporizador zen y sumérgete al 100% en la experiencia.
@@ -123,7 +158,9 @@ export default function Home() {
 
           <div className="step-card">
             <div className="step-number">3</div>
-            <div className="step-icon">🏆</div>
+            <div className="step-icon">
+              <Trophy size={36} color="#f4a261" />
+            </div>
             <h3 className="step-title">Crece y Gana Insignias</h3>
             <p className="step-desc">
               Registra tu reflexión, gana puntos de experiencia, desbloquea logros y extiende tu racha.
@@ -134,7 +171,9 @@ export default function Home() {
 
       {/* Daily Digital Wellbeing Insight */}
       <section className="daily-insight-card">
-        <div className="daily-insight-icon">💡</div>
+        <div className="daily-insight-icon">
+          <Lightbulb size={28} color="#f4a261" />
+        </div>
         <div className="daily-insight-content">
           <span className="daily-insight-tag">Consejo de Bienestar de Hoy</span>
           <h3 className="daily-insight-title">La regla de los 20 segundos</h3>
@@ -163,7 +202,9 @@ export default function Home() {
               className="home-cat-card"
               style={{ borderLeftColor: cat.color }}
             >
-              <span className="home-cat-icon">{cat.icon}</span>
+              <span className="home-cat-icon">
+                <AppIcon name={cat.icon} size={28} color={cat.color} />
+              </span>
               <div>
                 <h4 className="home-cat-name">{cat.name}</h4>
                 <span className="home-cat-link">Ver retos →</span>
