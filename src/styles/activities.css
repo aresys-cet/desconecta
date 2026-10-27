@@ -1,0 +1,732 @@
+/* =========================================================
+   ROULETTE WHEEL, TIMER & ACTIVITIES STYLES
+   ========================================================= */
+
+/* Roulette Container & Center Canvas */
+.roulette-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.roulette-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0 24px;
+}
+
+/* Pointer arrow */
+.roulette-pointer-container {
+  position: relative;
+  z-index: 20;
+  margin-bottom: -18px;
+  display: flex;
+  justify-content: center;
+}
+
+.roulette-pointer {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
+  transition: transform 0.1s ease;
+}
+
+.roulette-pointer.wobble {
+  animation: pointerTick 0.15s ease infinite alternate;
+}
+
+@keyframes pointerTick {
+  from { transform: translateY(0) rotate(-4deg); }
+  to { transform: translateY(2px) rotate(4deg); }
+}
+
+/* Canvas container */
+.roulette-canvas-box {
+  position: relative;
+  width: 440px;
+  height: 440px;
+  max-width: 90vw;
+  max-height: 90vw;
+  border-radius: 50%;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18), 0 0 0 10px var(--border-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  background: var(--bg-card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.roulette-canvas-box:hover {
+  transform: scale(1.015);
+  box-shadow: 0 20px 50px rgba(45, 106, 79, 0.25), 0 0 0 10px rgba(82, 183, 136, 0.3);
+}
+
+.roulette-canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Center button */
+.roulette-center-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  background: var(--btn-bg);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roulette-center-btn:hover:not(:disabled) {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.roulette-center-btn:disabled {
+  opacity: 0.85;
+  cursor: not-allowed;
+}
+
+/* Spin Action Button */
+.roulette-action-bar {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.spin-trigger-btn {
+  padding: 16px 36px;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--btn-text);
+  background: var(--btn-bg);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: var(--btn-shadow);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spin-trigger-btn:hover:not(:disabled) {
+  box-shadow: var(--btn-shadow-hover);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.spin-trigger-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.spinner-icon {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spinRing 0.8s linear infinite;
+}
+
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   CATEGORY FILTERS (Chips)
+   ========================================================= */
+.categories-filter-wrap {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.category-chip-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 1px solid var(--border-card);
+  background: var(--input-bg);
+  color: var(--text-body);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.category-chip-btn:hover {
+  border-color: var(--brand-color);
+  color: var(--text-title);
+  transform: translateY(-1px);
+}
+
+.category-chip-btn.active {
+  background: var(--brand-color);
+  color: #ffffff;
+  border-color: var(--brand-color);
+  box-shadow: 0 4px 12px rgba(45, 106, 79, 0.25);
+}
+
+/* =========================================================
+   ACTIVE ASSIGNED CHALLENGE SECTION
+   ========================================================= */
+.assigned-challenge-section {
+  width: 100%;
+  background: var(--bg-card);
+  border: 2px solid var(--brand-color);
+  border-radius: 24px;
+  padding: 30px;
+  box-sizing: border-box;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.assigned-banner-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(231, 111, 81, 0.12);
+  color: #e76f51;
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-bottom: 16px;
+}
+
+.assigned-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .assigned-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.assigned-info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.assigned-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.assigned-activity-icon {
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+.assigned-activity-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-title);
+  margin: 0;
+}
+
+.assigned-activity-desc {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-body);
+  margin: 0;
+}
+
+.assigned-instructions-box {
+  background: var(--input-bg);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+
+.assigned-instructions-box h4 {
+  margin: 0 0 8px;
+  font-size: 0.92rem;
+  color: var(--text-title);
+}
+
+.assigned-instructions-box ol {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.88rem;
+  color: var(--text-body);
+}
+
+/* Reflection form */
+.reflection-box {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reflection-box label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-title);
+}
+
+.reflection-box textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--input-text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+  min-height: 60px;
+  box-sizing: border-box;
+}
+
+.reflection-box textarea:focus {
+  outline: none;
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 3px var(--input-focus-ring);
+}
+
+.dismiss-challenge-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-body);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+  align-self: flex-start;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.dismiss-challenge-btn:hover {
+  color: #e63946;
+}
+
+/* =========================================================
+   ZEN TIMER COMPONENT
+   ========================================================= */
+.zen-timer-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--input-bg);
+  border: 1px solid var(--border-card);
+  border-radius: 20px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.zen-timer-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.zen-timer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--brand-color);
+  background: var(--brand-badge-bg);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.zen-pulse-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--brand-color);
+  animation: pulse-dot 1.5s infinite;
+}
+
+.zen-timer-target {
+  font-size: 0.82rem;
+  color: var(--text-body);
+  font-weight: 500;
+}
+
+/* SVG ring */
+.timer-circle-wrap {
+  position: relative;
+  width: 230px;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.timer-svg {
+  transform: rotate(0deg);
+}
+
+.timer-track {
+  stroke: var(--border-card);
+}
+
+.timer-progress {
+  stroke: var(--brand-color);
+  transition: stroke-dashoffset 0.8s linear, stroke 0.3s ease;
+}
+
+.timer-progress.active {
+  stroke: #52b788;
+}
+
+.timer-display-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-digits {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--text-title);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.timer-label {
+  font-size: 0.8rem;
+  color: var(--text-body);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-top: 4px;
+}
+
+/* Tip box */
+.timer-tip-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--brand-badge-bg);
+  padding: 8px 14px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  max-width: 320px;
+  text-align: center;
+}
+
+.timer-tip-icon {
+  font-size: 1rem;
+}
+
+.timer-tip-text {
+  font-size: 0.82rem;
+  color: var(--text-title);
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* Timer controls */
+.timer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+}
+
+.timer-btn {
+  padding: 9px 16px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.timer-btn-primary {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  box-shadow: var(--btn-shadow);
+}
+
+.timer-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--btn-shadow-hover);
+}
+
+.timer-btn-pause {
+  background: #e76f51;
+  color: #fff;
+}
+
+.timer-btn-pause:hover {
+  background: #d45d3f;
+}
+
+.timer-btn-secondary {
+  background: var(--input-bg);
+  border-color: var(--border-card);
+  color: var(--text-body);
+}
+
+.timer-btn-secondary:hover {
+  background: var(--brand-badge-bg);
+  color: var(--text-title);
+}
+
+.timer-btn-success {
+  background: #2a9d8f;
+  color: #fff;
+}
+
+.timer-btn-success:hover {
+  background: #21867a;
+}
+
+/* =========================================================
+   ACTIVITIES CATALOG & CARDS GRID
+   ========================================================= */
+.catalog-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.catalog-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-title);
+  margin: 0 0 6px;
+}
+
+.catalog-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  margin: 0;
+}
+
+.catalog-search-input {
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-card);
+  background: var(--bg-card);
+  color: var(--input-text);
+  font-size: 0.9rem;
+  min-width: 240px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.catalog-search-input:focus {
+  border-color: var(--brand-color);
+  box-shadow: 0 0 0 3px var(--input-focus-ring);
+}
+
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* Activity Card */
+.activity-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow);
+  border-color: rgba(82, 183, 136, 0.4);
+}
+
+.activity-card.current-assigned {
+  border-color: var(--brand-color);
+  background: linear-gradient(to bottom, var(--bg-card), var(--brand-badge-bg));
+}
+
+.current-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--brand-color);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+
+.activity-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.activity-cat-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.activity-badges {
+  display: flex;
+  gap: 6px;
+}
+
+.activity-badge-time,
+.activity-badge-xp {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 10px;
+  background: var(--input-bg);
+  border: 1px solid var(--border-card);
+  color: var(--text-title);
+}
+
+.activity-badge-xp {
+  color: #d97706;
+}
+
+.activity-card-main {
+  margin-bottom: 16px;
+}
+
+.activity-card-icon {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.activity-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-title);
+  margin: 0 0 8px;
+}
+
+.activity-card-desc {
+  font-size: 0.92rem;
+  color: var(--text-body);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.activity-card-expanded {
+  margin: 12px 0 16px;
+  padding: 12px;
+  background: var(--input-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-card);
+  font-size: 0.85rem;
+}
+
+.activity-benefit-snippet {
+  margin: 0 0 8px;
+  color: var(--brand-color);
+}
+
+.activity-steps ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  color: var(--text-body);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.activity-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-card);
+  gap: 10px;
+}
+
+.activity-details-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.82rem;
+  color: var(--text-body);
+  cursor: pointer;
+  padding: 0;
+}
+
+.activity-details-btn:hover {
+  color: var(--brand-color);
+}
+
+.activity-pick-btn {
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: var(--brand-badge-bg);
+  border: 1px solid rgba(82, 183, 136, 0.4);
+  color: var(--brand-color);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.activity-pick-btn:hover {
+  background: var(--brand-color);
+  color: #fff;
+  border-color: var(--brand-color);
+}

@@ -1,5 +1,10 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
+=======
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+>>>>>>> f5ddfe4 (Primer version)
 import ThemeToggle from "../components/ThemeToggle";
 import "../styles/auth.css";
 
@@ -7,10 +12,20 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+<<<<<<< HEAD
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Creación de cuenta:", { name, email, password });
+=======
+  const { register } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    register(name, email, password);
+    navigate("/");
+>>>>>>> f5ddfe4 (Primer version)
   };
 
   return (
