@@ -177,7 +177,7 @@ export default function Home() {
           <div className="step-card">
             <div className="step-number">2</div>
             <div className="step-icon">
-              <PhoneOff size={36} color="var(--accent-coral)" />
+              <PhoneOff size={36} color="#e76f51" />
             </div>
             <h3 className="step-title">Desconéctate y Cumple</h3>
             <p className="step-desc">
