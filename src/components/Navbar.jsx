@@ -5,7 +5,7 @@ import { useActivities } from "../context/ActivityContext";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, logout } = useAuth();
   const { stats, level, soundEnabled, toggleSound, assignedActivity, assignedStatus } = useActivities();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -108,11 +108,11 @@ export default function Navbar() {
           <ThemeToggle showLabel={false} />
 
           {/* User or Login */}
-          {isAuthenticated ? (
+          { user ? (
             <div className="navbar-user-wrap">
               <Link to="/perfil" className="navbar-user-btn" title="Ver mi perfil">
                 <span className="navbar-avatar">{user.avatar || "🌱"}</span>
-                <span className="navbar-username">{user.name.split(" ")[0]}</span>
+                <span className="navbar-username">{user.name?.split(" ")[0]}</span>
               </Link>
               <button
                 type="button"

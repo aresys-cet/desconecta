@@ -18,9 +18,9 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      return stored ? JSON.parse(stored) : DEFAULT_GUEST;
+      return stored ? JSON.parse(stored) : null;
     } catch {
-      return DEFAULT_GUEST;
+      return null;
     }
   });
 
@@ -71,8 +71,8 @@ export function AuthProvider({ children }) {
   };
 
   const loginAsGuest = () => {
-    setUser(DEFAULT_GUEST);
-    return DEFAULT_GUEST;
+    setUser(null);
+    return null;
   };
 
   const logout = () => {
